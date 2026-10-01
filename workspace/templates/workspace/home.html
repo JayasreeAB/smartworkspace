@@ -1,0 +1,97 @@
+{% extends 'workspace/base.html' %}
+
+{% block content %}
+
+<section class="hero">
+
+    <div>
+
+        <h1>
+            Welcome, {{ user.username }}
+        </h1>
+
+        <p>
+            Manage your workspace,
+            resources and bookings from one place.
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="cards">
+
+    <a href="{% url 'profile' %}" class="card">
+
+        <h2>My Profile</h2>
+
+        <p>
+            View your information and
+            booking history.
+        </p>
+
+    </a>
+
+
+    <a href="{% url 'resources' %}" class="card">
+
+        <h2>Resource Booking</h2>
+
+        <p>
+            Find and reserve organizational
+            resources.
+        </p>
+
+    </a>
+
+
+    <a href="{% url 'workspaces' %}" class="card">
+
+        <h2>Workspace Booking</h2>
+
+        <p>
+            Book meeting rooms,
+            halls and workspaces.
+        </p>
+
+    </a>
+
+
+    <a href="{% url 'maintenance' %}" class="card">
+
+        <h2>Maintenance</h2>
+
+        <p>
+            Report problems with resources
+            or workspaces.
+        </p>
+
+    </a>
+
+
+    <a href="{% url 'complaint' %}" class="card">
+
+        <h2>General Complaint</h2>
+
+        <p>
+            Submit a general workplace complaint.
+        </p>
+
+    </a>
+
+    <a href="{% url 'contact' %}" class="card">
+
+        <h2>Contact Us</h2>
+
+        <p>
+            Have questions or feedback or want to cancel bookings? Get in touch with us.
+        </p>
+
+    </a>
+
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,165 @@
+{% extends 'workspace/base.html' %}
+
+{% block content %}
+
+<style>
+
+    .contact-page {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+    }
+
+    .contact-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .contact-header h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+
+    .contact-header p {
+        color: #666;
+        font-size: 16px;
+    }
+
+    .contact-box {
+        background: white;
+        border-radius: 12px;
+        padding: 30px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        border: 1px solid #e5e5e5;
+    }
+
+    .contact-box h2 {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .contact-item {
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
+
+    .contact-item strong {
+        display: inline-block;
+        width: 150px;
+    }
+
+    .contact-item a {
+        color: #2563eb;
+        text-decoration: none;
+    }
+
+    .contact-item a:hover {
+        text-decoration: underline;
+    }
+
+    .cancellation-box {
+        background: #f8f9ff;
+        border-left: 5px solid #2563eb;
+    }
+
+    .contact-footer {
+        text-align: center;
+        margin-top: 30px;
+        color: #666;
+    }
+
+</style>
+
+
+<div class="contact-page">
+
+    <div class="contact-header">
+
+        <h1>Contact Us</h1>
+
+        <p>
+            Need help with bookings, cancellations, resources or
+            workspace-related issues? Contact the administrator.
+        </p>
+
+    </div>
+
+
+    <!-- Administrator Details -->
+
+    <div class="contact-box">
+
+        <h2>Administrator Contact</h2>
+
+        <div class="contact-item">
+            <strong>Email:</strong>
+
+            <a href="mailto:admin@gmail.com">
+                admin@gmail.com
+            </a>
+        </div>
+
+        <div class="contact-item">
+            <strong>Office:</strong>
+            Smart Workspace Management Office
+        </div>
+
+        <div class="contact-item">
+            <strong>Working Hours:</strong>
+            Monday - Friday, 9:00 AM - 5:00 PM
+        </div>
+
+    </div>
+
+
+    <!-- Cancellation -->
+
+    <div class="contact-box cancellation-box">
+
+        <h2>Booking Cancellation</h2>
+
+        <p>
+            To cancel a resource or workspace booking, please contact
+            the administrator through the email provided above.
+        </p>
+
+        <p>
+            Include the following details in your email:
+        </p>
+
+        <ul>
+
+            <li>Your username</li>
+
+            <li>Name of the resource or workspace</li>
+
+            <li>Booking date</li>
+
+            <li>Booking time</li>
+
+            <li>Reason for cancellation</li>
+
+        </ul>
+
+        <p>
+            The administrator will review your request and update the
+            booking accordingly.
+        </p>
+
+    </div>
+
+
+    
+    <div class="contact-footer">
+
+        <p>
+            We are here to help you use the Smart Workspace
+            Management System efficiently.
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

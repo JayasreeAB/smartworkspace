@@ -1,0 +1,39 @@
+{% extends 'workspace/base.html' %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <h1>General Complaint</h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <label>Subject</label>
+
+        <input
+            type="text"
+            name="subject"
+            placeholder="Complaint subject"
+            required
+        >
+
+        <label>Description</label>
+
+        <textarea
+            name="description"
+            rows="7"
+            placeholder="Describe your complaint..."
+            required
+        ></textarea>
+
+        <button type="submit">
+            Submit Complaint
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

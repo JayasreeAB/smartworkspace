@@ -1,0 +1,70 @@
+{% extends 'workspace/base.html' %}
+
+{% block content %}
+
+<div style="max-width:1100px;margin:40px auto;">
+
+    <h1>Maintenance Complaints</h1>
+
+    <div style="background:white;padding:25px;border-radius:12px;">
+
+        <table style="width:100%;border-collapse:collapse;">
+
+            <tr>
+                <th>User</th>
+                <th>Resource</th>
+                <th>Workspace</th>
+                <th>Description</th>
+                <!-- <th>Image</th> -->
+            </tr>
+
+            {% for complaint in complaints %}
+
+            <tr>
+
+                <td>{{ complaint.user.username }}</td>
+
+                <td>{{ complaint.resource|default:"-" }}</td>
+
+                <td>{{ complaint.workspace|default:"-" }}</td>
+
+                <td>{{ complaint.description }}</td>
+
+                <!-- <td>
+
+                    {% if complaint.image %}
+
+                    <a
+                        href="{{ complaint.image.url }}"
+                        target="_blank"
+                    >
+                        View Image
+                    </a>
+
+                    {% else %}
+
+                    No image
+
+                    {% endif %}
+
+                </td> -->
+
+            </tr>
+
+            {% empty %}
+
+            <tr>
+                <td colspan="5">
+                    No maintenance complaints.
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

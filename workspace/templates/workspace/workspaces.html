@@ -1,0 +1,57 @@
+{% extends 'workspace/base.html' %}
+
+{% block content %}
+
+<div class="page">
+
+    <h1>Available Workspaces</h1>
+
+    <div class="resource-grid">
+
+        {% for workspace in workspaces %}
+
+        <a
+            href="{% url 'workspace_detail' workspace.id %}"
+            class="resource-card"
+        >
+
+            {% if workspace.image %}
+
+                <img src="{{ workspace.image.url }}">
+
+            {% endif %}
+
+            <h2>
+                {{ workspace.name }}
+            </h2>
+
+            <p>
+                {{ workspace.workspace_type }}
+            </p>
+
+            <p>
+                Capacity:
+                {{ workspace.capacity }}
+            </p>
+
+            <p>
+                {{ workspace.location }}
+            </p>
+
+            <span>
+                View Workspace →
+            </span>
+
+        </a>
+
+        {% empty %}
+
+        <p>No workspaces available.</p>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

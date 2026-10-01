@@ -1,0 +1,84 @@
+{% extends 'workspace/base.html' %}
+
+{% block content %}
+
+<div class="form-container wide">
+
+    <h1>Maintenance Complaint</h1>
+
+    <p>
+        Report a problem with a resource or workspace.
+    </p>
+
+    <form
+        method="POST"
+        enctype="multipart/form-data"
+    >
+
+        {% csrf_token %}
+
+        <label>Resource</label>
+
+        <select name="resource">
+
+            <option value="">
+                -- Select Resource --
+            </option>
+
+            {% for resource in resources %}
+
+            <option value="{{ resource.id }}">
+                {{ resource.name }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <label>Workspace</label>
+
+        <select name="workspace">
+
+            <option value="">
+                -- Select Workspace --
+            </option>
+
+            {% for workspace in workspaces %}
+
+            <option value="{{ workspace.id }}">
+                {{ workspace.name }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <label>Complaint</label>
+
+        <textarea
+            name="description"
+            rows="6"
+            placeholder="Describe the problem..."
+            required
+        ></textarea>
+
+
+        <label>Attach Image</label>
+
+        <input
+            type="file"
+            name="image"
+        >
+
+
+        <button type="submit">
+            Submit Maintenance Complaint
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

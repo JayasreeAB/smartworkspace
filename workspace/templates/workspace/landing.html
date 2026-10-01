@@ -1,0 +1,41 @@
+{% extends 'workspace/base.html' %}
+
+{% block content %}
+
+<section class="landing">
+
+    <div class="landing-content">
+
+        <h1>
+            Smart Workspace
+        </h1>
+
+        <h2>
+            Collaboration & Resource Management System
+        </h2>
+
+        <p>
+            Book workspaces, manage resources,
+            collaborate with your team and
+            simplify workplace management.
+        </p>
+
+        <div class="landing-buttons">
+
+            <a href="{% url 'login' %}"
+               class="btn">
+                Login
+            </a>
+
+            <a href="{% url 'register' %}"
+               class="btn outline">
+                Register
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

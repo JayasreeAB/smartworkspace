@@ -1,0 +1,50 @@
+{% extends 'workspace/base.html' %}
+
+{% block content %}
+
+<div class="page">
+
+    <h1>Available Resources</h1>
+
+    <div class="resource-grid">
+
+        {% for resource in resources %}
+
+        <a
+            href="{% url 'resource_detail' resource.id %}"
+            class="resource-card"
+        >
+
+            {% if resource.image %}
+
+                <img src="{{ resource.image.url }}">
+
+            {% endif %}
+
+            <h2>{{ resource.name }}</h2>
+
+            <p>
+                {{ resource.resource_type }}
+            </p>
+
+            <p>
+                {{ resource.description|truncatewords:15 }}
+            </p>
+
+            <span>
+                View Resource →
+            </span>
+
+        </a>
+
+        {% empty %}
+
+        <p>No resources available.</p>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

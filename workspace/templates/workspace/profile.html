@@ -1,0 +1,116 @@
+{% extends 'workspace/base.html' %}
+
+{% block content %}
+
+<div class="page">
+
+    <h1>My Profile</h1>
+
+    <section class="profile-box">
+
+        <h2>My Information</h2>
+
+        <p>
+            <strong>Username:</strong>
+            {{ user.username }}
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+            {{ user.email }}
+        </p>
+
+        <!-- <p>
+            <strong>Name:</strong>
+            {{ user.get_full_name }}
+        </p> -->
+
+    </section>
+
+
+    <section class="booking-list">
+
+        <h2>My Resource Bookings</h2>
+
+        {% for booking in resource_bookings %}
+
+        <div class="booking-item">
+
+            <h3>
+                {{ booking.resource.name }}
+            </h3>
+
+            <p>
+                Date: {{ booking.booking_date }}
+            </p>
+
+            <p>
+                Time:
+                {{ booking.start_time }}
+                -
+                {{ booking.end_time }}
+            </p>
+
+            <p>
+                Purpose: {{ booking.purpose }}
+            </p>
+
+            <strong>
+                {{ booking.status }}
+            </strong>
+
+        </div>
+
+        {% empty %}
+
+        <p>No resource bookings.</p>
+
+        {% endfor %}
+
+    </section>
+
+
+    <section class="booking-list">
+
+        <h2>My Workspace Bookings</h2>
+
+        {% for booking in workspace_bookings %}
+
+        <div class="booking-item">
+
+            <h3>
+                {{ booking.workspace.name }}
+            </h3>
+
+            <p>
+                Date: {{ booking.booking_date }}
+            </p>
+
+            <p>
+                Time:
+                {{ booking.start_time }}
+                -
+                {{ booking.end_time }}
+            </p>
+
+            <p>
+                Purpose: {{ booking.purpose }}
+            </p>
+
+            <strong>
+                {{ booking.status }}
+            </strong>
+
+        </div>
+
+        {% empty %}
+
+        <p>No workspace bookings.</p>
+
+        {% endfor %}
+
+    </section>
+
+</div>
+
+{% endblock %}

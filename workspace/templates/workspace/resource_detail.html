@@ -1,0 +1,212 @@
+{% extends 'workspace/base.html' %}
+
+{% block content %}
+
+<div class="detail-page">
+
+    <!-- Resource Information -->
+    <div class="detail-header">
+
+        {% if resource.image %}
+        <img src="{{ resource.image.url }}" class="detail-image">
+        {% endif %}
+
+        <div>
+
+            <h1>{{ resource.name }}</h1>
+
+            <p>{{ resource.resource_type }}</p>
+
+            <p>{{ resource.description }}</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- Previous Uses -->
+    <section class="info-section">
+
+        <h2>Previous Uses</h2>
+
+        <p>
+            {{ resource.previous_uses|default:"No previous use information available." }}
+        </p>
+
+    </section>
+
+
+    <!-- Resource Calendar -->
+    <section class="schedule">
+
+        <h2>Resource Schedule</h2>
+
+        <div class="calendar-box">
+
+            <div class="calendar-header">
+
+                <button type="button" id="previousMonth">
+                    ←
+                </button>
+
+                <h3 id="monthYear"></h3>
+
+                <button type="button" id="nextMonth">
+                    →
+                </button>
+
+            </div>
+
+
+            <div class="calendar-weekdays">
+
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+
+            </div>
+
+
+            <div id="calendar" class="calendar-grid"></div>
+
+        </div>
+
+
+        <!-- Calendar Legend -->
+        <div class="legend">
+
+            <span class="legend-free">
+                Free
+            </span>
+
+            <span class="legend-booked">
+                Booked
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- Booking Details Popup -->
+    <div id="bookingModal" class="modal">
+
+        <div class="modal-content">
+
+            <span id="closeModal" class="close">
+                &times;
+            </span>
+
+            <h2 id="modalDate"></h2>
+
+            <div id="modalBookings"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Booking Form -->
+    <section class="booking-section">
+
+        <h2>Book This Resource</h2>
+
+        <form method="POST" action="{% url 'book_resource' resource.id %}">
+
+            {% csrf_token %}
+
+
+            <label>Your Name</label>
+
+            <input
+                type="text"
+                value="{{ user.get_full_name|default:user.username }}"
+                disabled
+            >
+
+
+            <label>Department</label>
+
+            <input
+                type="text"
+                name="department"
+                placeholder="Enter your department"
+                required
+            >
+
+
+            <label>Purpose</label>
+
+            <input
+                type="text"
+                name="purpose"
+                placeholder="What will you use it for?"
+                required
+            >
+
+
+            <label>Date</label>
+
+            <input
+                type="date"
+                name="booking_date"
+                required
+            >
+
+
+            <label>Start Time</label>
+
+            <input
+                type="time"
+                name="start_time"
+                required
+            >
+
+
+            <label>End Time</label>
+
+            <input
+                type="time"
+                name="end_time"
+                required
+            >
+
+
+            <button type="submit">
+                Request Booking
+            </button>
+
+        </form>
+
+    </section>
+
+</div>
+
+
+<!-- Booking data for JavaScript -->
+<script>
+
+    const bookings = [
+
+        {% for booking in bookings %}
+
+        {
+            date: "{{ booking.booking_date|date:'Y-m-d' }}",
+            purpose: "{{ booking.purpose|escapejs }}",
+            department: "{{ booking.department|escapejs }}",
+            start: "{{ booking.start_time|time:'H:i' }}",
+            end: "{{ booking.end_time|time:'H:i' }}",
+            status: "{{ booking.status }}"
+        },
+
+        {% endfor %}
+
+    ];
+
+</script>
+
+{% endblock %}
